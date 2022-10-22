@@ -1,0 +1,11 @@
+cheddar
+blue cheese
+american cheese
+monterey jack
+pepper jack
+parmesan
+mozzarella
+swiss
+goat cheese
+cojita
+brie

@@ -1,0 +1,17 @@
+version: "2.4"
+services:
+  burgerapi:
+    build: .
+    image: burgerapi
+    container_name: burgerapi
+    restart: on-failure
+    tty: true
+    command: [ 'uvicorn', 'app:app', '--host=0.0.0.0', '--port=9998' ]
+
+  nginx-burgerapi:
+    image: nginx:latest
+    container_name: nginx_burgerapi
+    ports:
+      - 9999:9999
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
