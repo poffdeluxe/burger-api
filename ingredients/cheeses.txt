@@ -7,5 +7,5 @@ parmesan
 mozzarella
 swiss
 goat cheese
-cojita
+cotija
 brie
