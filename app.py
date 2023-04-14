@@ -49,7 +49,7 @@ def generate_burger():
     # a 90% chance for the max sauces to be 2, a 10% chance for the max sauces to be 10
     sauce_max_roulette = choices([SAUCES_MAX, (SLOP_EM_UP)], [0.90, 0.10])
     burger["sauces"] = list(
-        set([choice(burgerdata["sauces"]) for i in range(SAUCES_MIN, sauce_max_roulette)])
+        set([choice(burgerdata["sauces"]) for i in range(SAUCES_MIN, sauce_max_roulette[0])])
     )
 
     # pretty good chance of mustard
