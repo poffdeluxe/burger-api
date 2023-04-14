@@ -1,9 +1,9 @@
-from random import randint, choice
+from random import choices, randint, choice
 
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 
-BURGAPI_VERSION = 0.2
+BURGAPI_VERSION = 0.3
 
 # out of 100
 CHEESE_CHANCE = 90
@@ -13,6 +13,7 @@ TOPPINGS_MIN = 1
 TOPPINGS_MAX = 3
 SAUCES_MIN = 1
 SAUCES_MAX = 3
+SLOP_EM_UP = 11
 
 
 app = FastAPI(redoc_url="/docs", docs_url=None)
@@ -40,13 +41,15 @@ def generate_burger():
     else:
         burger["cheeses"] = None
 
-    # 1 to 3 toppings
+    # 1 or 2 toppings
     burger["toppings"] = list(
         set([choice(burgerdata["toppings"]) for i in range(TOPPINGS_MIN, TOPPINGS_MAX)])
     )
 
+    # a 90% chance for the max sauces to be 2, a 10% chance for the max sauces to be 10
+    sauce_max_roulette = choices([SAUCES_MAX, (SLOP_EM_UP)], [0.90, 0.10])
     burger["sauces"] = list(
-        set([choice(burgerdata["sauces"]) for i in range(SAUCES_MIN, SAUCES_MAX)])
+        set([choice(burgerdata["sauces"]) for i in range(SAUCES_MIN, sauce_max_roulette)])
     )
 
     # pretty good chance of mustard
