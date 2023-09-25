@@ -46,8 +46,8 @@ def generate_burger():
         set([choice(burgerdata["toppings"]) for i in range(TOPPINGS_MIN, TOPPINGS_MAX)])
     )
 
-    # a 90% chance for the max sauces to be 2, a 10% chance for the max sauces to be 10
-    sauce_max_roulette = choices([SAUCES_MAX, (SLOP_EM_UP)], [0.90, 0.10])
+    # a 95% chance for the max sauces to be 2, a 5% chance for the max sauces to be 10
+    sauce_max_roulette = choices([SAUCES_MAX, (SLOP_EM_UP)], [0.95, 0.05])
     burger["sauces"] = list(
         set([choice(burgerdata["sauces"]) for i in range(SAUCES_MIN, sauce_max_roulette[0])])
     )
