@@ -67,6 +67,7 @@ def humanize_burger(burger):
     for i in ingredienttypes:
         if burger[i]:
             flattened_burger.extend(burger[i])
+
     return_string = f"{flattened_burger[0]} ({flattened_burger[1]}) with "
     return_string += ", ".join(flattened_burger[2:-2])
     return_string += " and " + flattened_burger[-2]
